@@ -1,0 +1,10 @@
+{
+    "terminal.integrated.env.osx": {
+        "PATH": "/Users/nathanzimmerly/.platformio/penv/bin:/Users/nathanzimmerly/.platformio/penv:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands",
+        "PLATFORMIO_CALLER": "vscode"
+    },
+    "files.associations": {
+        "array": "cpp",
+        "initializer_list": "cpp"
+    }
+}
