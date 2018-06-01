@@ -1,0 +1,10 @@
+(fp_lib_table
+  (lib (name Lite-On-6N137S-TA1)(type KiCad)(uri "$(KIPRJMOD)/Lite-On-6N137S-TA1.pretty")(options "")(descr ""))
+  (lib (name kicad-libraries-master-2)(type KiCad)(uri /Volumes/2ndDrive/Downloads/kicad-libraries-master-2)(options "")(descr ""))
+  (lib (name Housings_SSOP)(type KiCad)(uri /Volumes/2ndDrive/Downloads/Housings_SSOP.pretty-master)(options "")(descr ""))
+  (lib (name Housings_SOIC)(type KiCad)(uri /Volumes/2ndDrive/Downloads/Housings_SOIC.pretty-master)(options "")(descr ""))
+  (lib (name Connectors)(type KiCad)(uri /Volumes/2ndDrive/Downloads/Connectors.pretty-master)(options "")(descr ""))
+  (lib (name SparkFun-Connectors)(type KiCad)(uri /Volumes/2ndDrive/Downloads/SparkFun-Kicad-Libraries-master/SparkFun-Connectors.pretty)(options "")(descr ""))
+  (lib (name "PCB Revision 1")(type KiCad)(uri "$(KIPRJMOD)")(options "")(descr ""))
+  (lib (name wemos_d1_mini)(type KiCad)(uri /Volumes/2ndDrive/Downloads/d1_mini_kicad-master/library/wemos_d1_mini.pretty)(options "")(descr ""))
+)
