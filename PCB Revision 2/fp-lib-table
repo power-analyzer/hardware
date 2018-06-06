@@ -7,4 +7,5 @@
   (lib (name SparkFun-Connectors)(type KiCad)(uri /Volumes/2ndDrive/Downloads/SparkFun-Kicad-Libraries-master/SparkFun-Connectors.pretty)(options "")(descr ""))
   (lib (name "PCB Revision 1")(type KiCad)(uri "$(KIPRJMOD)")(options "")(descr ""))
   (lib (name wemos_d1_mini)(type KiCad)(uri /Volumes/2ndDrive/Downloads/d1_mini_kicad-master/library/wemos_d1_mini.pretty)(options "")(descr ""))
+  (lib (name rev2Library)(type KiCad)(uri "$(KIPRJMOD)/rev2Library.pretty")(options "")(descr ""))
 )
