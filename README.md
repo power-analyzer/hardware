@@ -1,4 +1,4 @@
-# hardware
+# Hardware
 
 This is the hardware and microcontroller software component of Ryan Rabello and Nathan Zimmerly's senior project.
 
