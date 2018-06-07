@@ -5,9 +5,8 @@
 #include <ArduinoJson.h>
 
 /*
-* TO DO:
-* Only sending 14 circuits worth of data right now
-*
+* Note:
+* Only sending 14 circuits worth of data right now, to send all 15, send less data points per circuit
 */
 
 const char* ssid = "WWU-Aruba-HWauth"; //Wi-Fi Bro WWU-Aruba-HWauth
@@ -17,13 +16,12 @@ const char* host = "35.165.91.189";
 const int port = 8000;
 
 String url = "/datapoints/"  + WiFi.macAddress() + "/batch/";
-//String url = "/datapoints/";
 
 WiFiClient client;
 
 int muxAddress = B0000;
 
-int data[16][35] = {0};    // can be 180 or 34
+int data[16][35] = {0};
 
 String circuitNames[16] = {"V", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"};
 
@@ -33,7 +31,9 @@ SimpleTimer timer;
 
 int timerID = 1;
 
-// ***Add later***
+int totalCircuits = 15;
+
+
 // Tests each circuit on startup to see if it is connected. 
 /*void testCircuits() {
     //muxAddress = B0000;
@@ -168,13 +168,11 @@ String jsonSerialization() {
 
     JsonObject& objectJson = jsonBuffer.createObject();
 
-    for (int i = 0; i<15; i++) { // should be i<16
+    for (int i = 0; i<totalCircuits; i++) { // should be i<16
         JsonArray& measurements = objectJson.createNestedArray(circuitNames[i]);
         int dataArray[35];
         for (int j = 0; j<35; j++) {
             dataArray[j] = data[i][j];
-            //Serial.print(data[i][j]);
-            //Serial.println();
         }
         measurements.copyFrom(dataArray);
     }
@@ -186,43 +184,26 @@ String jsonSerialization() {
 
 // Collects one period of data
 void collectData() {
-    //Serial.print("start");
-    //Serial.print(millis());
     memset(data[currentCircuit], 0, sizeof(data[currentCircuit]));
     int n = 0;
     unsigned long startTime = millis();
     int analogVal;
     while (millis() - startTime < 16.7) {       // should be 16.7, 19.65
         analogVal = analogRead(A0);
-        //data[currentCircuit][n] = analogVal;
-        //Serial.print(analogVal);
-        //Serial.println();
-        if (n % 5 == 0) {
+        if (n % 5 == 0) {   // causes 34 points to be collected in a 60hz period
             data[currentCircuit][n/5] = analogVal;
-            //Serial.print(analogVal);
-            //Serial.print("Test!");
-            //Serial.print(n/5);
-            //Serial.println();
         }
         n = n + 1;
     }
 
-    /*for (int j = 0; n<34 ; n++) {
-        Serial.print(data[currentCircuit][j]);
-        Serial.println();
-    }*/
-    //Serial.println();
-
-    if (currentCircuit < 14) {   // should be 15
+    // switch to the next circuit address unless on the last circuit, then send data to server
+    if (currentCircuit < totalCircuits - 1) {   // should be 15 to cover all circuits
         currentCircuit += 1;
     } else {
-        // send out data to Ryan
-        timer.disable(timerID);
-        String dataJSON = jsonSerialization();
-        //Serial.println("pre-JSON Serial");
-        //Serial.println(dataJSON);
-        currentCircuit = 0;
-        //Serial.println("post-JSON Serial");
+        // send out data to backend
+        timer.disable(timerID); //disable timer while sending data
+        String dataJSON = jsonSerialization();  // convert data into JSON
+        currentCircuit = 0; // reset circuit to 0
         String send = httpPost(url, dataJSON);
         if (send == "ERROR") {
             while(send == "ERROR") {
@@ -232,18 +213,13 @@ void collectData() {
         }
         timer.enable(timerID);
     }
+    //switch to next circuit
     muxAddress = currentCircuit;
     muxAddressUpdate();
-
-    //Serial.print("end");
-    //Serial.print(millis());
 }
 
 void setup() {
-    // put your setup code here, to run once:
     Serial.begin(38400);
-
-    //Serial.setDebugOutput(true);
 
     // Mux Address Pins
     pinMode(D1, OUTPUT);
@@ -253,16 +229,12 @@ void setup() {
 
     muxAddressUpdate();
 
-    pinMode(LED_BUILTIN, OUTPUT);
-
-    timerID = timer.setInterval(100, collectData); // should be 50
+    // timer to collect data on the next circuit every 100ms or 4 60hz periods
+    timerID = timer.setInterval(100, collectData);
 }
 
 
 
 void loop() {
-    // put your main code here, to run repeatedly:
-
     timer.run();
-
 }
