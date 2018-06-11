@@ -2,13 +2,13 @@
 % Senior Project
 % Output Voltage Conversion
 
-R33 = 110E3;  % 110E3 calculated, 100.9k actual
+R33 = 12E3;  % 110E3 calculated, 100.9k actual
 R37 = 100;     % 100 calculated, 99.4 actual
-C = 10E-6;      % C2: .1E-6 calculated, actual 8.43u (using a 10uF) 
-R38 = 51E3;     % 51E3 calculated, 37.02k actual bad from capacitance
-R39 = 51E3;     % 51E3 calculated, 34.57k actual bad from capacitance
+C = 10E-6;      % C2: 10E-6 calculated, actual 8.43u 
+R38 = 51E3;     % 51E3 calculated
+R39 = 51E3;     % 51E3 calculated
 Rm = 70;
-Radc = 320E3;
+Radc = 68.75E3;
 Vinp = 120*sqrt(2);
 
 R1 = R33;

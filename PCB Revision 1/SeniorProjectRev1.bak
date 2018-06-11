@@ -2118,4 +2118,6 @@ Text Notes 5900 4350 0    60   ~ 0
 A0 max = 3.2v
 Text Notes 5900 4500 0    60   ~ 0
 Add large resistor between pins 1 and 3 on current transformers
+Text Notes 5850 4750 0    60   ~ 0
+All parts must support up to 600V to be legally placed in a breaker box\n(Does this include the mux and jacks?).
 $EndSCHEMATC

@@ -9,8 +9,8 @@
 * Only sending 14 circuits worth of data right now, to send all 15, send less data points per circuit
 */
 
-const char* ssid = "WWU-Aruba-HWauth"; //Wi-Fi Bro WWU-Aruba-HWauth
-const char* password = "5C:CF:7F:13:AD:C4"; //5C:CF:7F:13:AD:C4
+const char* ssid = "iPhone Bro"; //Wi-Fi Bro WWU-Aruba-HWauth
+const char* password = "fabphone"; //5C:CF:7F:13:AD:C4
 
 const char* host = "35.165.91.189";
 const int port = 8000;
@@ -203,6 +203,7 @@ void collectData() {
         // send out data to backend
         timer.disable(timerID); //disable timer while sending data
         String dataJSON = jsonSerialization();  // convert data into JSON
+        //Serial.println(dataJSON);
         currentCircuit = 0; // reset circuit to 0
         String send = httpPost(url, dataJSON);
         if (send == "ERROR") {
@@ -216,10 +217,13 @@ void collectData() {
     //switch to next circuit
     muxAddress = currentCircuit;
     muxAddressUpdate();
+    //Serial.println(currentCircuit);
 }
 
 void setup() {
     Serial.begin(38400);
+
+    Serial.println(WiFi.macAddress());
 
     // Mux Address Pins
     pinMode(D1, OUTPUT);

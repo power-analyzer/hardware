@@ -28,12 +28,13 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:SeniorProjectRev1-cache
 LIBS:TIMux
 LIBS:Half_Shield-cache
 LIBS:wemos_mini
+LIBS:SeniorProjectRev1-cache
 LIBS:powerSupply
 LIBS:SeniorProjectLib
+LIBS:SeniorProjectRev2-cache
 EELAYER 25 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -106,7 +107,7 @@ L R R1
 U 1 1 5A8654D4
 P 1900 3250
 F 0 "R1" V 1980 3250 50  0000 C CNN
-F 1 "3.8k" V 1900 3250 50  0000 C CNN
+F 1 "4k" V 1900 3250 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805" V 1830 3250 50  0001 C CNN
 F 3 "" H 1900 3250 50  0001 C CNN
 	1    1900 3250
@@ -117,7 +118,7 @@ L R R4
 U 1 1 5A8655E4
 P 3000 3500
 F 0 "R4" V 3080 3500 50  0000 C CNN
-F 1 "101" V 3000 3500 50  0000 C CNN
+F 1 "100" V 3000 3500 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805" V 2930 3500 50  0001 C CNN
 F 3 "" H 3000 3500 50  0001 C CNN
 	1    3000 3500
@@ -2446,7 +2447,7 @@ L R R2
 U 1 1 5B16F731
 P 2300 3250
 F 0 "R2" V 2380 3250 50  0000 C CNN
-F 1 "3.8k" V 2300 3250 50  0000 C CNN
+F 1 "4k" V 2300 3250 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805" V 2230 3250 50  0001 C CNN
 F 3 "" H 2300 3250 50  0001 C CNN
 	1    2300 3250
@@ -2457,7 +2458,7 @@ L R R3
 U 1 1 5B16F908
 P 2700 3250
 F 0 "R3" V 2780 3250 50  0000 C CNN
-F 1 "3.8k" V 2700 3250 50  0000 C CNN
+F 1 "4k" V 2700 3250 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805" V 2630 3250 50  0001 C CNN
 F 3 "" H 2700 3250 50  0001 C CNN
 	1    2700 3250
@@ -2468,7 +2469,7 @@ Wire Wire Line
 Wire Wire Line
 	2050 3250 2150 3250
 Text Notes 1750 3100 0    60   ~ 0
-11.3k total. Splitting into \n3 R's so that it meets the \n600V requirement.
+12k total. Splitting into \n3 R's so that it meets the \n600V requirement.
 Wire Notes Line
 	6250 7250 5450 7250
 Wire Notes Line
